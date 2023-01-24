@@ -9,13 +9,24 @@ imageArray = [
   "owl.jpg",
   "rat.jpg",
 ];
-dotsArray = [];
 let i = 0;
+
+let timer;
+
+function runTimer() {
+  timer = setTimeout(() => {
+    slideRight();
+  }, 5000);
+}
+
+function resetTimer() {
+  clearTimeout(timer);
+  runTimer();
+}
 
 function displayDots() {
   const dotsContainer = document.querySelector(".dots-container");
   for (let num = 0; num < imageArray.length; num++) {
-    dotsArray[num] = num;
     const dot = document.createElement("div");
     dot.classList.add("dot");
     dot.setAttribute("data-img", num);
@@ -24,6 +35,7 @@ function displayDots() {
       dot.classList.add("selected");
       i = dot.getAttribute("data-img");
       image.style.backgroundImage = `url(${imageArray[i]})`;
+
       isSelected();
     });
 
@@ -32,6 +44,7 @@ function displayDots() {
 }
 
 function isSelected() {
+  resetTimer();
   const slides = document.querySelectorAll(".dot");
   slides.forEach((slide) => {
     index = slide.getAttribute("data-img");
@@ -44,7 +57,7 @@ function isSelected() {
   });
 }
 
-btnRight.addEventListener("click", function () {
+function slideRight() {
   if (i < imageArray.length - 1) {
     i++;
     console.log(i);
@@ -54,9 +67,9 @@ btnRight.addEventListener("click", function () {
     image.style.backgroundImage = `url(${imageArray[i]})`;
   }
   isSelected();
-});
+}
 
-btnLeft.addEventListener("click", function () {
+function slideLeft() {
   if (i > 0) {
     i--;
     console.log(i);
@@ -66,6 +79,16 @@ btnLeft.addEventListener("click", function () {
     image.style.backgroundImage = `url(${imageArray[i]})`;
   }
   isSelected();
+}
+
+btnRight.addEventListener("click", function () {
+  slideRight();
 });
 
+btnLeft.addEventListener("click", function () {
+  slideLeft();
+});
+
+runTimer();
 displayDots();
+isSelected();
