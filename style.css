@@ -28,6 +28,7 @@ body {
   align-items: center;
   background-color: #1e293b;
   padding: 0 15px;
+  user-select: none;
 }
 
 .slider-left:hover,
@@ -41,4 +42,5 @@ body {
   width: 640px;
   height: 380px;
   background-image: url(flowerpurple.jpg);
+  transition: background-image 300ms ease-in-out;
 }
