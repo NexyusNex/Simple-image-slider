@@ -38,9 +38,38 @@ body {
 }
 
 .image {
-  border: 1px solid white;
+  border: 1px solid #334155;
   width: 640px;
   height: 380px;
   background-image: url(flowerpurple.jpg);
   transition: background-image 300ms ease-in-out;
+}
+
+.dots-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 150px;
+  gap: 16px;
+}
+
+.dot {
+  width: 30px;
+  height: 30px;
+  border-radius: 20px;
+  transition: height 300ms linear;
+  transition: width 300ms linear;
+  background-color: #1e293b;
+}
+
+.dot:hover {
+  background-color: #334155;
+  height: 40px;
+  width: 40px;
+}
+
+.dot.selected {
+  background-color: #334155;
+  height: 40px;
+  width: 40px;
 }
