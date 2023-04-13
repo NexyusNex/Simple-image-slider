@@ -16,7 +16,8 @@ body {
 .container {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 100svh;
+  min-height: 1000px;
 }
 
 .header,
@@ -98,4 +99,25 @@ body {
 .footer {
   margin-top: auto;
   height: 50px;
+}
+
+@media screen and (width<=600px) {
+  .header {
+    font-size: 32px;
+  }
+  .image-container {
+    flex-direction: column;
+    width: 100%;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+  .slider-left,
+  .slider-right {
+    justify-content: center;
+    padding: 0;
+  }
+  .image {
+    width: 100%;
+    background-size: 100% 100%;
+  }
 }
